@@ -1,0 +1,107 @@
+body{
+    padding-top: 5rem;
+}
+body, html{
+    height: 100%;
+}
+.video-wrapper {
+    width: 100%;
+    background-color: lightblue;
+  }
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover:not(.active) {
+    background-color: #111;
+  }
+  
+  .active {
+    background-color: #4CAF50;
+  }
+section {
+    margin: 2rem;
+    padding: 3rem;
+    background-color:lightgrey;
+    border-radius: 2em;
+    opacity: 0.75;
+    font-weight:bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+.bgimg{
+    background-image: url("uni.jpg");
+    height: 100%;
+    position: relative;
+    opacity: 0.85;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed; /* fixed in viewport */
+}
+footer{
+    color:black;
+    margin-left: 43%;
+    font-weight: bold;
+    
+}
+#a{
+    padding-top: 20rem;
+}
+#b{
+    padding-top: 30rem;
+}
+h1{
+    color:black;
+}
+h2{
+    color:black;
+}
+#heading2{
+    color:black;
+}
+aside a{
+    font-size: 10em;
+}
+aside p{
+    font-weight: bold;
+}
+.name{
+    padding-left: 10rem;
+    background-color: lightblue;
+    background-size: 2em;
+    border-radius: 2em;
+    
+}
+ .box ul{
+    margin: 0;
+    padding: 0;
+  }
+  .box li{
+    display: inline;
+    margin: 1rem;
+    list-style: none;
+  }
+  .box li a{
+    color: white;
+    text-decoration: none;
+    font-size: 2em;
+    transition: all ease-in-out 250ms;
+  }
+  .box li a:hover{
+    color: white;
+  }
