@@ -26,40 +26,120 @@
                        
                       </header>
                       <hr />
-                      <h1>To find area of trapezium</h1>
-                      <article>
-                        <section class="col-sm-6">
-      
-                        <form  id="f">
-                          <table>
-                              <tr>
-                                  <td>Enter length</td>
-                       <td> <input type="number" name="length" value=10></td>
-                       </tr>
+                      <h1>To find volume of cube</h1>
+                      <div class="row">
+
+                        <!--Rows have columns - column 1 (7/12) -->
+                        <div class="col-sm-6">
                   
-                        <tr>
-                            <td>Enter breadth</td>
-                            <td><input type="number" name="breath" value=4></td>
-                        </tr>
-                        <tr>
-                          <td>Enter height</td>
-                          <td><input type="number" name="height" value=4></td>
-                      </tr>
-                        
+                          
+                          <hr>
                   
-                        <tr>
-                            <td colspan="2"><input type="submit" ></td>
-                        </tr>
-                      
-                        
-                        
-                        </table>
-                        </form> 
-                      </section>
-                    </article>
+                          <fieldset class="col-sm-8">
+                            <label for="guest">height  </label>
+                            <input id="guest" type="number" min="1" >
+                            <span id="firstWarning" class="text-danger"></span>
+                          </fieldset>
+                  
+                          <fieldset class="col-sm-6">
+                            <label for="firstNumber">breadth</label>
+                            <input id="firstNumber" type="number" min="1" >
+                            <span id="firstWarning" class="text-danger"></span>
+                          </fieldset>
+                  
+                          <fieldset class="col-sm-8">
+                            <label for="secondNumber">length  </label>
+                            <input id="secondNumber" type="number" min="1" >
+                            <span id="secondWarning" class="text-danger"></span>
+                          </fieldset>
+                  
+                        </div>
+                        <!--end column 1-->
+                  
+                        <!--column 2 (5/12) -->
+                        <div class="col-md-5 mb-4">
+                          
+                          <hr>
+                          <button id="addButton" class="btn btn-primary" onclick="updateWithAdd()" >Calculate Volume</button>
+                          <hr>
+                          <h3>For Ajax call</h3>
+                          
+                          <hr>
+                          <h3>To clear local storage</h3>
+                          <button id="wiper" class="btn btn-info">Clear</button>
+                          <hr>
+                          <p id="result"></p>
+                  
+                        </div>
 
         <footer id="b">
+            <footer class="footer mt-auto py-3 bg-light">
+                <div class="container">
+                  <span class="text-muted">Right-click / Inspect / Console</span>
+                  &#9670;
+                  <span class="text-muted"><a href="quint.html">View Tests</a></span>
+                  &#9670;
+                  <a href="https://profcase.github.io/js-gui-with-tests/">Demo</a>
+                  &#9670;
+                  <a href="https://github.com/profcase/js-gui-with-tests">Source</a>
+                </div>
+              </footer>
+            
            &copy; Chetan Kudaravalli
        </footer>
+   
+       <script src="main.js"></script>
+       <script>
+        /* global localStorage */
+        console.log('SCRIPT START')
+        console.log('Declare testable functions......................')
+        function add(x, y, z) { return x * y * z }
+        console.log('Defined add=' + add)
+        console.log('Declare event listeners .......................')
+        window.addEventListener('load', (event) => {
+          console.log('  Starting initialization ')
+          if (localStorage.getItem('guest')) {
+            document.querySelector('#guest').value = localStorage.guest
+            console.log(`  Stored guest = ${localStorage.guest}`)
+          }
+          if (localStorage.getItem('firstNumber')) {
+            document.querySelector('#firstNumber').value = localStorage.firstNumber
+            console.log(`  Stored firstNumber = ${localStorage.firstNumber}`)
+          }
+          if (localStorage.getItem('secondNumber')) {
+            document.querySelector('#secondNumber').value = localStorage.secondNumber
+            console.log(`  Stored secondNumber = ${localStorage.secondNumber}`)
+          }
+          console.log('  Finished initialization')
+        })
+        document.querySelector('#addButton').addEventListener('click', () => {
+          console.log('  Starting clicker click handler')
+          const origCount = parseInt(localStorage.getItem('countOfClicks')) || 0
+          const s = parseInt(document.querySelector('#guest').value)
+          console.log('s=' + s)
+          const i = parseInt(document.querySelector('#firstNumber').value)
+          console.log('i=' + i)
+          const j = parseInt(document.querySelector('#secondNumber').value)
+          console.log('j=' + j)
+          const ct = origCount + 1
+          const ans = `  volume is ${add(s,i,j)}. This has been run  ${ct}  times.`
+          document.querySelector('#result').innerHTML = ans
+          localStorage.setItem('countOfClicks', ct)  // define a string key to store + its value
+          localStorage.setItem('guest', s)
+          localStorage.setItem('firstNumber', i)
+          localStorage.setItem('secondNumber', j)
+          console.log('  Finished clicker click handler')
+        })
+        document.querySelector('#wiper').addEventListener('click', () => {
+          console.log('  Starting wiper click handler')
+          localStorage.removeItem('countOfClicks')
+          localStorage.removeItem('guest')
+          localStorage.removeItem('firstNumber')
+          localStorage.removeItem('secondNumber')
+          console.log('  Finished wiper click handler - localStorage entries removed')
+        })
+        console.log('SCRIPT END')
+
+      </script>
                 </body>
                 </html>
