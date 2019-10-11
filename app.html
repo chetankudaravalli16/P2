@@ -63,7 +63,8 @@
                           <button id="addButton" class="btn btn-primary" onclick="updateWithAdd()" >Calculate Volume</button>
                           <hr>
                           <h3>For Ajax call</h3>
-                          
+                          <button id="getJokeButton" class="btn btn-success">Serious Facts</button>
+                          <p>Don't Laugh</p>
                           <hr>
                           <h3>To clear local storage</h3>
                           <button id="wiper" class="btn btn-info">Clear</button>
@@ -79,9 +80,7 @@
                   &#9670;
                   <span class="text-muted"><a href="quint.html">View Tests</a></span>
                   &#9670;
-                  <a href="https://profcase.github.io/js-gui-with-tests/">Demo</a>
-                  &#9670;
-                  <a href="https://github.com/profcase/js-gui-with-tests">Source</a>
+                  
                 </div>
               </footer>
             
@@ -130,6 +129,18 @@
           localStorage.setItem('secondNumber', j)
           console.log('  Finished clicker click handler')
         })
+        const updateWithJoke = async (event) => {
+            document.querySelector('#result').innerHTML = ''
+            const url = 'https://api.icndb.com/jokes/random?limitTo=[nerdy]'
+            const response = await fetch(url)
+            const obj = await response.json()
+            const joke = obj.value.joke || 'No joke for you.';
+            document.querySelector('#result').innerHTML = joke
+            }
+
+            document.addEventListener('click', event => {
+  if (event.target && event.target.id === 'getJokeButton') { updateWithJoke(event) }
+});
         document.querySelector('#wiper').addEventListener('click', () => {
           console.log('  Starting wiper click handler')
           localStorage.removeItem('countOfClicks')
